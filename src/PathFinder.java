@@ -341,6 +341,10 @@ public class PathFinder extends JPanel implements MouseListener, MouseMotionList
         int x = mouseEvent.getX() / cellSize;
         int y = mouseEvent.getY() / cellSize;
 
+        if (x < 0 || x >= columns || y < 0 || y >= rows) {
+            return;
+        }
+
         if (SwingUtilities.isLeftMouseButton(mouseEvent) && board[y][x].type != CellType.START && board[y][x].type != CellType.GOAL) {
             board[y][x].setType(CellType.WALL);
         } else if (SwingUtilities.isRightMouseButton(mouseEvent)) {
